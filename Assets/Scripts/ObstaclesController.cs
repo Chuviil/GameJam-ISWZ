@@ -26,9 +26,12 @@ public class ObstaclesController : MonoBehaviour
     private int _stage = 1;
 
     private bool _finishedStages = false;
-
+    private bool _started = false;
+    
     void Update()
     {
+        if(!_started) return;
+        
         if (_finishedStages) return;
         
         _spawnTimer += Time.deltaTime;
@@ -75,5 +78,10 @@ public class ObstaclesController : MonoBehaviour
 
         // Decrease the range of maxXPosition
         maxXPosition = Mathf.Max(minXPosition, maxXPosition - 20f);
+    }
+
+    public void StartGame()
+    {
+        _started = true;
     }
 }
